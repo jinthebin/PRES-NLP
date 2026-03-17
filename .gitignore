@@ -1,0 +1,19 @@
+service_account.json
+/dat/
+.env
+.venv/
+/.venv/
+
+*.env 
+.env
+
+#environment variables 
+_site/
+_book/
+__pycache*
+.jupyter_cache/
+dat/
+*.pkl
+*.zip
+/dat/
+pipeline_log.txt
