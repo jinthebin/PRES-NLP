@@ -1,3 +1,8 @@
 spacy
 pandas
 numpy
+dotenv
+gspread
+oauth2client
+asent
+#eng_spacysentiment
