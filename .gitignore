@@ -6,7 +6,7 @@ service_account.json
 
 *.env 
 .env
-.csv
+*.csv
 
 #environment variables 
 _site/
