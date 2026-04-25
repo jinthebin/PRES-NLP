@@ -5,4 +5,6 @@ dotenv
 gspread
 oauth2client
 asent
+sqlalchemy
+
 #eng_spacysentiment
