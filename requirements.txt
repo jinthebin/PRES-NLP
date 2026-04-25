@@ -7,6 +7,6 @@ oauth2client
 asent
 sqlalchemy
 flask
-plotly
-plotly-express
+plotly>=4.0.0 #this includes plotly-express
+#plotly-express
 #eng_spacysentiment
