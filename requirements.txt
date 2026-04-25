@@ -6,5 +6,7 @@ gspread
 oauth2client
 asent
 sqlalchemy
-
+flask
+plotly
+plotly-express
 #eng_spacysentiment
