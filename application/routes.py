@@ -31,7 +31,7 @@ def index(): #call this method anything
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
     # Graph 4 - sentiment analysis using asent visualized
-    figsent = sentiment_analysis(test_data['Text'])
+    figsent = sentiment_analysis(test_data, 'Text')
 
     return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, figsent = figsent)
 
