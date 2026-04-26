@@ -14,34 +14,40 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style = "background-color: #193e72; font-family: ;">
-        <a class="navbar-brand" href="#">NIHR My Research Experience</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> <!--style = "background-color: #193e72; font-family: ;"-->
+        <a class="navbar-brand" href="#">My Research Experience
+            <img src="/static/NIHR_Core_Logo_Horizontal_RGB.png" width="400" height="50" alt="NIHR Logo">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Refresh <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="{{ url_for('TopicModeling') }}">Topic Modeling</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
+                More options
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="{{ url_for('index') }}">Main</a>
+                <a class="dropdown-item" href="https://rdn.nihr.ac.uk/">NIHR RDN website</a>
+                <a class="dropdown-item" href="https://myresearchexperience.com/">My Research Experience</a>
                 </div>
             </li>
             </ul>
         </div>
+          <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
     </nav>
     <main>
         <div class="containers">
