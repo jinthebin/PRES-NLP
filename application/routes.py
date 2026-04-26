@@ -1,6 +1,7 @@
 from application import app
 from flask import render_template, request, redirect, url_for, session
 import pandas as pd
+pd.options.plotting.backend = "plotly"
 import plotly
 import plotly.express as px
 import json
@@ -20,9 +21,8 @@ def index(): #call this method anything
     graph1JSON = json.dumps(fig1, cls = plotly.utils.PlotlyJSONEncoder)
 
     #graph2
-    df2 = px.data.iris()
-    fig2 = px.scatter_3d(df2, x = "sepal_length", y = "sepal_width", z = "petal_width",
-                         color = "species", title = "Iris Dataset")
+    df2 = pd.read_csv(r"C:\Users\busaji\CODERepository\NLP-app\.dat\sentiment_data.csv")
+    fig2 = df2['Sentiment Label'].plot(kind = 'hist')
     
     graph2JSON = json.dumps(fig2, cls = plotly.utils.PlotlyJSONEncoder)
 
