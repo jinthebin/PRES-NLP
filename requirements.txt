@@ -11,5 +11,6 @@ plotly>=4.0.0 #this includes plotly-express
 spacytextblob
 gensim
 pyLDAvis
+nbformat>=4.2.0
 #plotly-express
 #eng_spacysentiment
