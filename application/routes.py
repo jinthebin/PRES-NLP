@@ -4,7 +4,8 @@ import pandas as pd
 import plotly
 import plotly.express as px
 import json
-
+from sentiment import sentiment_analysis
+from dataload import test_data
 
 @app.route("/")
 def index(): #call this method anything
@@ -26,7 +27,10 @@ def index(): #call this method anything
     fig3 = px.line(df, x="year", y="lifeExp", color='country',  title="Life Expectancy")
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
-    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON)
+    # Graph 4 - sentiment analysis using asent visualized
+    figsent = sentiment_analysis(test_data['Text'])
+
+    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, figsent = figsent)
 
 @app.route("/layout") #this is the hyperlink 
 def layout():

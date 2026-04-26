@@ -8,5 +8,6 @@ asent
 sqlalchemy
 flask
 plotly>=4.0.0 #this includes plotly-express
+spacytextblob
 #plotly-express
 #eng_spacysentiment
