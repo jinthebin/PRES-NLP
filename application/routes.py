@@ -6,8 +6,10 @@ import plotly.express as px
 import json
 from sentiment import sentiment_analysis
 from dataload import test_data
+from .utils import auth_required
 
 @app.route("/")
+@auth_required
 def index(): #call this method anything
 
     #Graph one
@@ -33,5 +35,6 @@ def index(): #call this method anything
     return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, figsent = figsent)
 
 @app.route("/layout") #this is the hyperlink 
+@auth_required
 def layout():
     return render_template("layout.html", title= 'layout')
