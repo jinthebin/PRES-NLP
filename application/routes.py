@@ -27,8 +27,7 @@ def index(): #call this method anything
     graph2JSON = json.dumps(fig2, cls = plotly.utils.PlotlyJSONEncoder)
 
     # Graph three
-    df = px.data.gapminder().query("continent=='Oceania'")
-    fig3 = px.line(df, x="year", y="lifeExp", color='country',  title="Life Expectancy")
+    fig3 = px.histogram(df2, color='Sentiment Label', x="RRDN match using Trust ODS code")
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
     # Graph 4 - sentiment analysis using asent visualized
