@@ -6,7 +6,7 @@ import plotly
 import plotly.express as px
 import json
 from sentiment import sentiment_analysis
-from dataload import test_data
+from dataload import test_data, sentiment_data
 from .utils import auth_required
 import pyLDAvis
 from topicmodeling import topic_modeling_pipeline
@@ -16,18 +16,28 @@ from topicmodeling import topic_modeling_pipeline
 def index(): #call this method anything
 
     #Graph one
-    df = px.data.medals_wide()
-    fig1 = px.bar(df, x = "nation", y=['gold','silver','bronze'], title = "Wide=FormInput")
+
+    sentiment_counts = sentiment_data.groupby(["Reporting Year", "Sentiment Label"]).size().reset_index(name='Count')
+    fig1 = px.line(sentiment_counts, x="Reporting Year", y="Count", color="Sentiment Label",
+                labels={'Count': 'Number of Responses', 'Reporting Year': 'Reporting FY'},
+                title='Number of responses Over Time by Sentiment')
+    fig1.update_layout(
+        legend_title='Sentiment',
+        plot_bgcolor='black',  # Set plot background color to black
+        paper_bgcolor='black',  # Set paper background color to black
+        font=dict(color='white')  # Set font color to white
+    )
+
     graph1JSON = json.dumps(fig1, cls = plotly.utils.PlotlyJSONEncoder)
 
     #graph2
-    df2 = pd.read_csv(r"C:\Users\busaji\CODERepository\NLP-app\.dat\sentiment_data.csv")
-    fig2 = df2['Sentiment Label'].plot(kind = 'hist')
+    
+    fig2 = sentiment_data['Sentiment Label'].plot(kind = 'hist')
     
     graph2JSON = json.dumps(fig2, cls = plotly.utils.PlotlyJSONEncoder)
 
     # Graph three
-    fig3 = px.histogram(df2, color='Sentiment Label', x="RRDN match using Trust ODS code")
+    fig3 = px.histogram(sentiment_data, color='Sentiment Label', x="RRDN match using Trust ODS code", title='Number of responses over regions by Sentiment')
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
     # Graph 4 - sentiment analysis using asent visualized
