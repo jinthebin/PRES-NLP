@@ -1,0 +1,12 @@
+{% extends 'layout.html' %} #inhertence template
+{% block content %}
+
+    <div class="topic-model">
+        <h1>Topic Model Clusters</h1>
+            <!-- The prepared html is injected here -->
+            <div>
+            {{ pyldavis_html | safe }}
+            </div>
+    </div>
+
+{% endblock %}

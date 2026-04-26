@@ -1,5 +1,5 @@
 from application import app
-from flask import render_template, url_for
+from flask import render_template, request, redirect, url_for, session
 import pandas as pd
 import plotly
 import plotly.express as px
@@ -7,6 +7,8 @@ import json
 from sentiment import sentiment_analysis
 from dataload import test_data
 from .utils import auth_required
+import pyLDAvis
+from topicmodeling import topic_modeling_pipeline
 
 @app.route("/")
 @auth_required
@@ -38,3 +40,31 @@ def index(): #call this method anything
 @auth_required
 def layout():
     return render_template("layout.html", title= 'layout')
+
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if username == "user1" and password == "pass":
+            session['is_logged_in'] = True
+            return redirect(url_for('index'))
+        else:
+            error = "Invalid credentials. Please try again."
+            
+    return render_template('login.html', title='Login', error=error)
+
+@app.route("/logout")
+def logout():
+    session.pop('is_logged_in', None)
+    return redirect(url_for('login'))
+
+@app.route("/TopicModeling")
+def TopicModeling():
+        # Generate HTML 
+    vis_data = topic_modeling_pipeline(test_data,3)
+    vis_html = pyLDAvis.prepared_data_to_html(vis_data)
+    
+    return render_template('topic.html', title='Topic Modeling', pyldavis_html=vis_html)
