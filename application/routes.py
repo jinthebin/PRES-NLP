@@ -42,10 +42,29 @@ def index(): #call this method anything
     fig3 = px.histogram(sentiment_data, color='Sentiment Label', x="RRDN match using Trust ODS code", title='Number of responses over regions by Sentiment')
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
+    # graph
+    color_map = {'Positive': 'lightgreen', 'Negative': 'orange', 'Neutral': 'grey'}
+
+    # Create a choropleth map using Plotly Express
+    fig4 = px.choropleth(df, 
+                        locations="Location", 
+                        locationmode="country names",
+                        color="Sentiment",
+                        color_discrete_map=color_map,
+                        projection="natural earth",
+                        title="Sentiment Choropleth Map",
+                        hover_name="Location",
+                        labels={"Sentiment": "Sentiment"}
+                        )
+    
+    graph4JSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
+    
     # Graph 4 - sentiment analysis using asent visualized
     plot_url = update_word_cloud(test_data, 'Text')
 
-    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, plot_url = plot_url)
+
+
+    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, graph4JSON=graph4JSON, plot_url = plot_url)
 
 @app.route("/layout") #this is the hyperlink 
 @auth_required
@@ -60,7 +79,7 @@ def presentation():
 @app.route("/presentation3")
 @auth_required
 def presentation3():
-    return render_template("presentation_3.html", title = "presentation3")
+    return render_template("presentation3.html", title = "presentation3")
 
 @app.route("/presentation2")
 @auth_required
@@ -91,7 +110,7 @@ def logout():
 @auth_required
 def TopicModeling():
         # Generate HTML 
-    vis_data = topic_modeling_pipeline(sentiment_data,20)
+    vis_data = topic_modeling_pipeline(test_data,3)
     vis_html = pyLDAvis.prepared_data_to_html(vis_data)
     
     return render_template('topic.html', title='Topic Modeling', pyldavis_html=vis_html)
