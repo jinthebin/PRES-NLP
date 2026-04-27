@@ -18,3 +18,4 @@ dat/
 *.zip
 /dat/
 pipeline_log.txt
+/tst/*.png 
