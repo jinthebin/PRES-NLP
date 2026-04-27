@@ -6,7 +6,7 @@ import plotly
 import plotly.express as px
 import json
 from sentiment import sentiment_analysis
-from dataload import test_data, sentiment_data
+from dataload import test_data, sentiment_data, sentiment_data_merged
 from .utils import auth_required
 import pyLDAvis
 from topicmodeling import topic_modeling_pipeline
@@ -46,9 +46,9 @@ def index(): #call this method anything
     color_map = {'Positive': 'lightgreen', 'Negative': 'orange', 'Neutral': 'grey'}
 
     # Create a choropleth map using Plotly Express
-    fig4 = px.choropleth(df, 
+    fig4 = px.choropleth(sentiment_data_merged, 
                         locations="Location", 
-                        locationmode="country names",
+                        locationmode="",
                         color="Sentiment",
                         color_discrete_map=color_map,
                         projection="natural earth",
@@ -58,7 +58,7 @@ def index(): #call this method anything
                         )
     
     graph4JSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
-    
+
     # Graph 4 - sentiment analysis using asent visualized
     plot_url = update_word_cloud(test_data, 'Text')
 
@@ -110,7 +110,7 @@ def logout():
 @auth_required
 def TopicModeling():
         # Generate HTML 
-    vis_data = topic_modeling_pipeline(test_data,3)
+    vis_data = topic_modeling_pipeline(sentiment_data,8)
     vis_html = pyLDAvis.prepared_data_to_html(vis_data)
     
     return render_template('topic.html', title='Topic Modeling', pyldavis_html=vis_html)
