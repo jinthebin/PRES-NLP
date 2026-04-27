@@ -5,7 +5,7 @@ raw_data = pd.read_csv(r'C:\Users\busaji\CODERepository\NLP-app\PRES-NLP\raw_dat
 raw_data['Text'] = raw_data['Text'].fillna('N/A')
 raw_data['Text'] = raw_data['Text'].astype(str)
 
-test_data = raw_data.head(100)
+test_data = raw_data.sample(100)
 test_data['Text'] = test_data['Text'].fillna('N/A')
 test_data['Text'] = test_data['Text'].astype(str)
 
