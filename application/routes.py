@@ -57,6 +57,16 @@ def layout():
 def presentation():
     return render_template("presentation.html", title = "presentation")
 
+@app.route("/presentation3")
+@auth_required
+def presentation3():
+    return render_template("presentation_3.html", title = "presentation3")
+
+@app.route("/presentation2")
+@auth_required
+def presentation2():
+    return render_template("presentation2.html", title = "presentation2")
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     error = None
