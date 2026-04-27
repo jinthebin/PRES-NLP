@@ -1,0 +1,92 @@
+{% extends 'layout.html' %} #inhertence template
+{% block content %}
+<div class="progress" style="height: 1px;">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress" style="height: 20px;">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+
+<div class="card-deck">
+  <div class="card">
+    <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+    <div class="card-body">
+      <h5 class="card-title">Topic Modeling</h5>
+      <p class="card-text">Topic modeling is a frequently used approach to discover hidden semantic patterns portrayed by a text corpus and automatically identify topics that exist inside it. Namely, it’s a type of statistical modeling that leverages unsupervised machine learning to analyze and identify clusters or groups of similar words within a body of text. For example, a topic modeling algorithm may be deployed to determine whether the contents of a document imply it’s an invoice, complaint, or contract.</p>
+      <a class="btn btn-primary" href="https://www.datacamp.com/tutorial/what-is-topic-modeling">More information</a>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Text Analytics</h5>
+      <p class="card-text">The objective of analytics is to derive insights from data. Traditionally, such data was structured, meaning it’s in a standardized format for efficient access. As the world shifts and becomes more digitalized, much of the data being generated is unstructured, meaning there’s no predefined data model.
+
+According to Gartner, unstructured data represents 80-90% of all new enterprise data. Furthermore, it’s growing three times faster than structured data. As a result, analytics experts must employ new techniques to obtain relevant information from their datasets.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <!--<img class="d-block w-100" src="..." alt="First slide">-->
+        <div class="card">
+            <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="..." alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- references below-->
+<div class="list-group">
+  <a href="https://kennethenevoldsen.com/asent/introduction.html" class="list-group-item list-group-item-action ">
+    Spacy Asent
+  </a>
+  <a href="https://importsem.com/evaluate-sentiment-analysis-in-bulk-with-spacy-and-python/" class="list-group-item list-group-item-action">
+    Evaluation of sentiment scores</a>
+  <a href="https://plotly.com/python/" class="list-group-item list-group-item-action">Ploty</a>
+  <a href="https://pandas.pydata.org/docs/" class="list-group-item list-group-item-action">Pandas</a>
+  <a href="https://obscuredwriter.medium.com/creating-interactive-dashboards-with-plotly-and-dash-bba1a2d3c2c2" class="list-group-item list-group-item-action disabled">
+    Creating Interactive dashboards</a>
+    <a href="https://getbootstrap.com/docs/4.0/components/" class="list-group-item list-group-item-action">Bootstrap 4.0 documentation</a>
+  <a href="https://github.com/flatplanet/flasker/" class="list-group-item list-group-item-action">Flasker authentication for Flask apps</a>
+  <a href="https://github.com/michalsnik/aos" class="list-group-item list-group-item-action">AOS Animation for Bootsrap</a>
+  <a href="https://somabhadra.medium.com/the-conclusive-face-off-flask-vs-streamlit-40bdef6859a4" class="list-group-item list-group-item-action">
+    Streamlit Vs Flask</a>
+</div>
+{% endblock %}
