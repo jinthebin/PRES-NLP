@@ -29,7 +29,7 @@ def sentiment_analysis(df, text_col):
         if sentiment > 0:
             sent_label = "Positive"
         elif sentiment == 0:
-            sent_label = "None"
+            sent_label = "Neutral"
         else:
             sent_label = "Negative"
 
