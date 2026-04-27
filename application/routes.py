@@ -51,6 +51,11 @@ def index(): #call this method anything
 def layout():
     return render_template("layout.html", title= 'layout')
 
+@app.route("/presentation")
+@auth_required
+def presentation():
+    return render_template("presentation.html", title = "presentation")
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     error = None
@@ -72,6 +77,7 @@ def logout():
     return redirect(url_for('login'))
 
 @app.route("/TopicModeling")
+@auth_required
 def TopicModeling():
         # Generate HTML 
     vis_data = topic_modeling_pipeline(test_data,3)
