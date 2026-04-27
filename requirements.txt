@@ -14,5 +14,6 @@ pyLDAvis
 nbformat>=4.2.0
 wordcloud
 matplotlib
+geopandas
 #plotly-express
 #eng_spacysentiment
