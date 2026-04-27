@@ -33,8 +33,9 @@ def index(): #call this method anything
 
     #graph2
     
-    fig2 = sentiment_data['Sentiment Label'].plot(kind = 'hist')
-    
+    # fig2 = sentiment_data['Sentiment Label'].plot(kind = 'hist')
+    sentiment_counts_small = sentiment_data.groupby("Sentiment Label").size().reset_index(name='Count')
+    fig2 = px.pie(sentiment_counts_small, values="Count", names="Sentiment Label", hole=.3)
     graph2JSON = json.dumps(fig2, cls = plotly.utils.PlotlyJSONEncoder)
 
     # Graph three
@@ -80,7 +81,7 @@ def logout():
 @auth_required
 def TopicModeling():
         # Generate HTML 
-    vis_data = topic_modeling_pipeline(test_data,3)
+    vis_data = topic_modeling_pipeline(sentiment_data,20)
     vis_html = pyLDAvis.prepared_data_to_html(vis_data)
     
     return render_template('topic.html', title='Topic Modeling', pyldavis_html=vis_html)

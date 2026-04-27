@@ -44,16 +44,17 @@
     </div>
 
     <!-- plotly CDN -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>--> <!--older version loading?-->
+    <script src="https://cdn.plot.ly/plotly-3.5.0.min.js" charset="utf-8"></script>
     <script>
         var graph1 = {{ graph1JSON | safe}};
-        Plotly.plot("chart1", graph1, {})
+        Plotly.newPlot("chart1", graph1, {})
 
         var graph2 = {{ graph2JSON | safe}};
-        Plotly.plot("chart2", graph2, {})
+        Plotly.newPlot("chart2", graph2, {})
 
         var graph3 = {{ graph3JSON | safe}};
-        Plotly.plot("chart3", graph3,{});
+        Plotly.newPlot("chart3", graph3,{});
 
 
     </script>

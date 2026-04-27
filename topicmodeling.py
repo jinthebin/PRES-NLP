@@ -25,10 +25,6 @@ import pyLDAvis.gensim_models as gensimvis
 # STOP_WORDS.add('word') 
 # STOP_WORDS.remove('word')
 
-# Print to confirm that your word has been added or removed
-# print(STOP_WORDS)
-
-
 # Lemmatize tokens
 def lemmatization(texts, allowed_postags=["NOUN", "ADJ", "VERB", "ADV"]):   # Doing part of speech (PoS) tagging helps with lemmatization
     # Load the nlp pipeline, omitting the parser and ner steps of the workflow to conserve computer memory
@@ -44,9 +40,6 @@ def lemmatization(texts, allowed_postags=["NOUN", "ADJ", "VERB", "ADV"]):   # Do
         texts_out.append(final)
     return (texts_out)
 
-# lemmatized_texts = lemmatization(raw_data["Text"])
-# print(lemmatized_texts[0][0:90]) # Print results to verify; you can also check the Variable Explorer in Spyder
-
 
 # Preprocess texts
 def gen_words(texts):
@@ -57,55 +50,6 @@ def gen_words(texts):
         final.append(new)
     return (final)
 
-# data_words = gen_words(lemmatized_texts) # Pass lemmatized_texts from previous step through the gen_words function
-
-# N-grams
-
-# bigram_phrases = gensim.models.Phrases(data_words, min_count=3, threshold=50)
-# trigram_phrases = gensim.models.Phrases(bigram_phrases[data_words], threshold=50)
-
-# bigram = gensim.models.phrases.Phraser(bigram_phrases)
-# trigram = gensim.models.phrases.Phraser(trigram_phrases)
-
-# def make_bigrams(texts):
-#     return [bigram[doc] for doc in texts]
-
-# def make_trigrams(texts):
-#     return [trigram[bigram[doc]] for doc in texts]
-
-# data_bigrams = make_bigrams(data_words)
-# data_bigrams_trigrams = make_trigrams(data_bigrams)
-
-# --Uncomment to print list of words showing bigrams and trigrams
-# print (data_bigrams_trigrams[0])
-# Create dictionary of all words in texts
-# id2word = corpora.Dictionary(data_bigrams_trigrams)
-
-# Represent dictionary words as tuples (index, frequency)
-# corpus = []
-# for text in data_bigrams_trigrams:
-#     new = id2word.doc2bow(text)
-#     corpus.append(new)
-
-    
-# Specify number of topics (clusters of words)
-
-# num_topics = 10   # Experiment with more and fewer numbers of topics, comparing results
-
-# # Create LDA model
-# lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus,
-#                                             id2word=id2word,
-#                                             num_topics=num_topics,
-#                                             random_state=100,
-#                                             update_every=1,
-#                                             chunksize=100,     
-#                                             # Change chunksize to increase or decrease the length of segments
-#                                             passes=50,         
-#                                             # Can do more passes but will increase the time it takes the block to run
-#                                             alpha="auto")
-
-# # Print topics
-# lda_model.show_topics()
 
 def topic_modeling_pipeline(text, num_topics):
     lemmatized_texts = lemmatization(text)
