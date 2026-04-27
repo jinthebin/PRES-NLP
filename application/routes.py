@@ -10,6 +10,7 @@ from dataload import test_data, sentiment_data
 from .utils import auth_required
 import pyLDAvis
 from topicmodeling import topic_modeling_pipeline
+from word_cloud import update_word_cloud
 
 @app.route("/")
 @auth_required
@@ -41,9 +42,9 @@ def index(): #call this method anything
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
     # Graph 4 - sentiment analysis using asent visualized
-    figsent = sentiment_analysis(test_data, 'Text')
+    plot_url = update_word_cloud(test_data, 'Text')
 
-    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, figsent = figsent)
+    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, plot_url = plot_url)
 
 @app.route("/layout") #this is the hyperlink 
 @auth_required
