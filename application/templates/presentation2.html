@@ -8,8 +8,8 @@
   <div class="container">
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end">
-        <li class="page-item disabled">
-          <a class="page-link" href="{{ url_for('presentation') }}" >Previous</a>
+        <li class="page-item">
+          <a class="page-link" href="{{ url_for('presentation') }}">Previous</a>
         </li>
         <li class="page-item"><a class="page-link" href="{{ url_for('presentation') }}">1</a></li>
         <li class="page-item"><a class="page-link" href="{{ url_for('presentation2') }}">2</a></li>
@@ -53,10 +53,10 @@
   </div>
   <div class="card bg-primary text-white text-center p-3">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <p>Very excellent staff who provided great care & information about the research & tests. Thank you!</p>
       <footer class="blockquote-footer">
         <small>
-          Someone famous in <cite title="Source Title">Source Title</cite>
+          Research participant from <cite title="Source Title">2024/25</cite>
         </small>
       </footer>
     </blockquote>
@@ -89,23 +89,5 @@
     </div>
   </div>
 </div>
-<!-- references below-->
-<div class="list-group">
-  <a href="https://kennethenevoldsen.com/asent/introduction.html" class="list-group-item list-group-item-action ">
-    Spacy Asent
-  </a>
-  <a href="https://importsem.com/evaluate-sentiment-analysis-in-bulk-with-spacy-and-python/" class="list-group-item list-group-item-action">
-    Evaluation of sentiment scores</a>
-  <a href="https://plotly.com/python/" class="list-group-item list-group-item-action">Ploty</a>
-  <a href="https://pandas.pydata.org/docs/" class="list-group-item list-group-item-action">Pandas</a>
-  <a href="https://obscuredwriter.medium.com/creating-interactive-dashboards-with-plotly-and-dash-bba1a2d3c2c2" class="list-group-item list-group-item-action disabled">
-    Creating Interactive dashboards</a>
-    <a href="https://getbootstrap.com/docs/4.0/components/" class="list-group-item list-group-item-action">Bootstrap 4.0 documentation</a>
-  <a href="https://github.com/flatplanet/flasker/" class="list-group-item list-group-item-action">Flasker authentication for Flask apps</a>
-  <a href="https://github.com/michalsnik/aos" class="list-group-item list-group-item-action">AOS Animation for Bootsrap</a>
-  <a href="https://somabhadra.medium.com/the-conclusive-face-off-flask-vs-streamlit-40bdef6859a4" class="list-group-item list-group-item-action">
-    Streamlit Vs Flask</a>
-    <a href="https://stackoverflow.com/questions/79657796/plotly-charts-not-displaying-correctly-despite-valid-data-and-code" 
-    class="list-group-item-action">Plotly Javascript issue</a>
-</div>
+
 {% endblock %}

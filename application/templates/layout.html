@@ -15,8 +15,9 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!--style = "background-color: #193e72; font-family: ;"-->
+       
         <a class="navbar-brand" href="https://myresearchexperience.com/">
-            <img src="\static\nihr-logo-COKtqaN5.svg" width="300" height="30" class="d-inline-block align-top" alt="NIHR Logo">
+             <img src="\static\nihr-logo-COKtqaN5.svg" width="300" height="30" class="d-inline-block align-top" alt="NIHR Logo">
             My Research Experience
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,24 +25,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Refresh <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href = "{{ url_for('index') }}"> Text Analytics</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('TopicModeling') }}">Topic Modeling</a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('presentation') }}">Presentation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/AbhinavJindalNIHR/PRES-NLP">GitHub Repository</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('presentation') }}">Presentation</a>
-            </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 More options
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="{{ url_for('index') }}">Main</a>
+                <a class="dropdown-item" href="#">Refresh<span class="sr-only">(current)</span></a>
                 <a class="dropdown-item" href="https://rdn.nihr.ac.uk/">NIHR RDN website</a>
                 <a class="dropdown-item" href="https://sense.odp.nihr.ac.uk/public/">NIHR RDN Reporting</a>
                 </div>
@@ -73,4 +78,26 @@
         AOS.init();
     </script>
 </body>
+<footer>
+
+    <!-- references below-->
+<div class="list-group">
+    <a href="https://kennethenevoldsen.com/asent/introduction.html" class="list-group-item list-group-item-action ">
+        Spacy Asent
+    </a>
+    <a href="https://importsem.com/evaluate-sentiment-analysis-in-bulk-with-spacy-and-python/" class="list-group-item list-group-item-action">
+        Evaluation of sentiment scores</a>
+    <a href="https://plotly.com/python/" class="list-group-item list-group-item-action">Ploty</a>
+    <a href="https://pandas.pydata.org/docs/" class="list-group-item list-group-item-action">Pandas</a>
+    <a href="https://obscuredwriter.medium.com/creating-interactive-dashboards-with-plotly-and-dash-bba1a2d3c2c2" class="list-group-item list-group-item-action disabled">
+        Creating Interactive dashboards</a>
+        <a href="https://getbootstrap.com/docs/4.0/components/" class="list-group-item list-group-item-action">Bootstrap 4.0 documentation</a>
+    <a href="https://github.com/flatplanet/flasker/" class="list-group-item list-group-item-action">Flasker authentication for Flask apps</a>
+    <a href="https://github.com/michalsnik/aos" class="list-group-item list-group-item-action">AOS Animation for Bootsrap</a>
+    <a href="https://somabhadra.medium.com/the-conclusive-face-off-flask-vs-streamlit-40bdef6859a4" class="list-group-item list-group-item-action">
+        Streamlit Vs Flask</a>
+    <a href="https://stackoverflow.com/questions/79657796/plotly-charts-not-displaying-correctly-despite-valid-data-and-code" 
+    class="list-group-item list-group-item-action">Plotly Javascript issue</a>
+</div>
+</footer>
 </html>
