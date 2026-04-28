@@ -15,18 +15,20 @@ from word_cloud import update_word_cloud
 @app.route("/")
 @auth_required
 def index(): #call this method anything
-
+    color_map = {'Positive': 'lightgreen', 'Negative': 'orange', 'Neutral': 'grey'}
     #Graph one
 
     sentiment_counts = sentiment_data.groupby(["Reporting Year", "Sentiment Label"]).size().reset_index(name='Count')
     fig1 = px.line(sentiment_counts, x="Reporting Year", y="Count", color="Sentiment Label",
+                   color_discrete_map=color_map,
                 labels={'Count': 'Number of Responses', 'Reporting Year': 'Reporting FY'},
                 title='Number of responses Over Time by Sentiment')
     fig1.update_layout(
-        legend_title='Sentiment',
-        plot_bgcolor='black',  # Set plot background color to black
-        paper_bgcolor='black',  # Set paper background color to black
-        font=dict(color='white')  # Set font color to white
+        legend_title='Sentiment'
+        # ,
+        # plot_bgcolor='black',  # Set plot background color to black
+        # paper_bgcolor='black',  # Set paper background color to black
+        # font=dict(color='white')  # Set font color to white
     )
 
     graph1JSON = json.dumps(fig1, cls = plotly.utils.PlotlyJSONEncoder)
@@ -35,7 +37,7 @@ def index(): #call this method anything
     
     # fig2 = sentiment_data['Sentiment Label'].plot(kind = 'hist')
     sentiment_counts_small = sentiment_data.groupby("Sentiment Label").size().reset_index(name='Count')
-    fig2 = px.pie(sentiment_counts_small, values="Count", names="Sentiment Label", hole=.3)
+    fig2 = px.pie(sentiment_counts_small, values="Count",color_discrete_map=color_map ,names="Sentiment Label", hole=.3)
     graph2JSON = json.dumps(fig2, cls = plotly.utils.PlotlyJSONEncoder)
 
     # Graph three
@@ -43,28 +45,34 @@ def index(): #call this method anything
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
     # graph
-    color_map = {'Positive': 'lightgreen', 'Negative': 'orange', 'Neutral': 'grey'}
-
-    # Create a choropleth map using Plotly Express
-    fig4 = px.choropleth(sentiment_data_merged, 
-                        locations="Location", 
-                        locationmode="",
-                        color="Sentiment",
-                        color_discrete_map=color_map,
-                        projection="natural earth",
-                        title="Sentiment Choropleth Map",
-                        hover_name="Location",
-                        labels={"Sentiment": "Sentiment"}
-                        )
     
-    graph4JSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
-
+ 
+    # Create a choropleth map using Plotly Express
+    # fig4 = px.choropleth(sentiment_data_merged, 
+    #                     locations="Location", 
+    #                     locationmode="",
+    #                     color="Sentiment",
+    #                     color_discrete_map=color_map,
+    #                     projection="natural earth",
+    #                     title="Sentiment Choropleth Map",
+    #                     hover_name="Location",
+    #                     labels={"Sentiment": "Sentiment"}
+    #                     )
+    
+    # graph4JSON = json.dumps(fig4, cls=plotly.utils.PlotlyJSONEncoder)
+   
     # Graph 4 - sentiment analysis using asent visualized
     plot_url = update_word_cloud(test_data, 'Text')
 
 
 
-    return render_template('index.html', title='Home', graph1JSON = graph1JSON, graph2JSON = graph2JSON, graph3JSON=graph3JSON, graph4JSON=graph4JSON, plot_url = plot_url)
+    return render_template('index.html', 
+                           title='Home', 
+                           graph1JSON = graph1JSON, 
+                           graph2JSON = graph2JSON, 
+                           graph3JSON=graph3JSON, 
+                        #    graph4JSON=graph4JSON, 
+                           plot_url = plot_url)
 
 @app.route("/layout") #this is the hyperlink 
 @auth_required
