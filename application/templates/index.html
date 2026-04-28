@@ -1,0 +1,79 @@
+{% extends 'layout.html' %} #inhertence template
+{% block content %}
+    <div class="card p-3">
+    <blockquote class="blockquote mb-0 card-body">
+      <p>All the staff are excellent and treat you with kindness and respect.</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Research participant from <cite title="Source Title">2022/23</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>    
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">A snapshot of text analytics on <br>My Research Experience survey responses</h1>
+            <p class="lead">A form of Qualitative Analysis using Natural Language Processing.</p>
+        </div>
+    </div>
+
+    <!--<div class="site-header-logo">
+        <h1 class="text-center">
+            Text Analytics
+        </h1>
+    </div>-->
+
+    <div class="row p-4">
+        <div class="card m-auto" style="width: 90%;" data-aos="slide-up">
+            <div class="card-body">
+                <div id="chart1"></div>
+                <p>
+                    The random text for data presentation using plotly.
+                </p>
+            </div>
+        </div>
+
+        <div class="card m-auto" style="width: 90%;" data-aos="fade-left">
+            <div class="card-body">
+                <div id="chart2"></div>
+                <p>
+                    This chart gives the distribution of My Research Experience responses in terms of the sentiment they represent.
+                </p>
+            </div>
+        </div>
+
+        <div class="card mb-4 m-auto" style="width: 90%;" data-aos="fade-right">
+            <div class="card-body">
+                <div id="chart3"></div>
+                <p class="card-text">This chart shows the distrbution of responses over Regional Research Delivery Networks (RRDNs) by the sentiment they represent.</p>
+            </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 m-auto" style="width: 90%;" data-aos="fade-right">
+            <div class="card-body">
+                
+                <img src="{{ plot_url }}" alt="Wordcloud">
+                <p class="card-text">This chart shows a Word Cloud generated using the most frequently occuring words in the MRE responses.</p>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- plotly CDN -->
+    <!--<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>--> <!--older version loading?-->
+    <script src="https://cdn.plot.ly/plotly-3.5.0.min.js" charset="utf-8"></script>
+    <script>
+        var graph1 = {{ graph1JSON | safe}};
+        Plotly.newPlot("chart1", graph1, {})
+
+        var graph2 = {{ graph2JSON | safe}};
+        Plotly.newPlot("chart2", graph2, {})
+
+        var graph3 = {{ graph3JSON | safe}};
+        Plotly.newPlot("chart3", graph3,{});
+
+
+    </script>
+    {% endblock %}

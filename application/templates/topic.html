@@ -1,0 +1,22 @@
+{% extends 'layout.html' %} #inhertence template
+{% block content %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Topic Modeling</h1>
+                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            </div>
+        </div>
+
+        <div class="row p-4">
+            <div class="card m-auto" style="width: 90%;" data-aos="slide-up">
+                <div class="card-body">
+                    <!-- The prepared html is injected here -->
+                    <div>
+                    {{ pyldavis_html | safe }}
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

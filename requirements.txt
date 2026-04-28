@@ -6,5 +6,15 @@ gspread
 oauth2client
 asent
 sqlalchemy
-
+flask
+plotly>=4.0.0 #this includes plotly-express
+spacytextblob
+gensim
+pyLDAvis
+nbformat>=4.2.0
+wordcloud
+matplotlib
+geopandas
+pyproj #for choropleths
+#plotly-express
 #eng_spacysentiment
