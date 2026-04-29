@@ -16,5 +16,6 @@ wordcloud
 matplotlib
 geopandas
 pyproj #for choropleths
+scikit-learn #for clustering
 #plotly-express
 #eng_spacysentiment
