@@ -12,6 +12,13 @@
   </div>    
 <div class="jumbotron jumbotron-fluid">
         <div class="container">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                          <li class="page-item">
+                        <a class="page-link" href="{{ url_for('TopicModeling') }}">Head to Topic Modeling</a>
+                        </li>
+                    </ul>
+                </nav>
             <h1 class="display-4">A snapshot of text analytics on <br>My Research Experience survey responses</h1>
             <p class="lead">A form of Qualitative Analysis using Natural Language Processing.</p>
         </div>
@@ -28,7 +35,7 @@
             <div class="card-body">
                 <div id="chart1"></div>
                 <p>
-                    The random text for data presentation using plotly.
+                    Time Series: The distribution of MRE responses over time - split over the sentiment reflected.
                 </p>
             </div>
         </div>
@@ -58,6 +65,7 @@
             </div>
             </div>
         </div>
+
 
     </div>
 
