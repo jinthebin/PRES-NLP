@@ -18,3 +18,7 @@ geopandas
 pyproj #for choropleths
 #plotly-express
 #eng_spacysentiment
+# added below for free deployment to render
+flask-sqlalchemy
+psycopg2-binary
+gunicorn
