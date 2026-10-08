@@ -6,7 +6,7 @@ import plotly
 import plotly.express as px
 import json
 from sentiment import sentiment_analysis
-from dataload import test_data, sentiment_data, sentiment_data_merged
+from dataload import raw_data, test_data #, sentiment_data, sentiment_data_merged
 from .utils import auth_required
 import pyLDAvis
 from topicmodeling import topic_modeling_pipeline
@@ -18,10 +18,10 @@ def index(): #call this method anything
     color_map = {'Positive': 'lightgreen', 'Negative': 'orange', 'Neutral': 'grey'}
     #Graph one
 
-    sentiment_counts = sentiment_data.groupby(["Reporting Year", "Sentiment Label"]).size().reset_index(name='Count')
-    fig1 = px.line(sentiment_counts, x="Reporting Year", y="Count", color="Sentiment Label",
+    sentiment_counts = raw_data.groupby(["month-yr", "rating_review"]).size().reset_index(name='Count')
+    fig1 = px.line(sentiment_counts, x="month-yr", y="Count", color="rating_review",
                    color_discrete_map=color_map,
-                labels={'Count': 'Number of Responses', 'Reporting Year': 'Reporting FY'},
+                labels={'Count': 'Number of Responses', 'month-yr': 'Reporting month & FY'},
                 title='Number of responses Over Time by Sentiment')
     fig1.update_layout(
         legend_title='Sentiment'
@@ -36,12 +36,12 @@ def index(): #call this method anything
     #graph2
     
     # fig2 = sentiment_data['Sentiment Label'].plot(kind = 'hist')
-    sentiment_counts_small = sentiment_data.groupby("Sentiment Label").size().reset_index(name='Count')
-    fig2 = px.pie(sentiment_counts_small, values="Count",color_discrete_map=color_map ,names="Sentiment Label", hole=.3)
+    sentiment_counts_small = raw_data.groupby("rating_review").size().reset_index(name='Count')
+    fig2 = px.pie(sentiment_counts_small, values="Count",color_discrete_map=color_map ,names="rating_review", hole=.3)
     graph2JSON = json.dumps(fig2, cls = plotly.utils.PlotlyJSONEncoder)
 
     # Graph three
-    fig3 = px.histogram(sentiment_data, color='Sentiment Label', x="RRDN match using Trust ODS code", title='Number of responses over regions by Sentiment')
+    fig3 = px.histogram(raw_data, color='rating_review', x="state", title='Number of responses over regions by Sentiment')
     graph3JSON = json.dumps(fig3, cls=plotly.utils.PlotlyJSONEncoder)
 
     # graph
@@ -118,7 +118,7 @@ def logout():
 @auth_required
 def TopicModeling():
         # Generate HTML 
-    vis_data = topic_modeling_pipeline(sentiment_data,8)
+    vis_data = topic_modeling_pipeline(raw_data['Text'],8)
     vis_html = pyLDAvis.prepared_data_to_html(vis_data)
     
     return render_template('topic.html', title='Topic Modeling', pyldavis_html=vis_html)
